@@ -1,25 +1,49 @@
 `timescale 1ps/1ps
+
 module tb_top ;
+
 reg a;
+
 reg b;
+
 wire o;
 
+
+
 initial
+
 begin 
+
   {a,b} = "00";
-  #100 {a,b} = "01";
-  #100 {a,b} = "10";
-  #100 {a,b} = "11";
-  #100 {a,b} = "00";
+
+  #10 {a,b} = 2'b01;
+
+  #10 {a,b} = 2'b10;
+
+  #10 {a,b} = 2'b11;
+
+  #10 {a,b} = 2'b00;
+
 end
 
+
+
 and_ex dut(.a (a),
+
            .b (b),
+
            .o (o) 
+
            );
-intial
+
+initial
+
 begin
+
 $dumpvars(0,tb_top);
+
 $dumpfile("test.vcd");
-end
+
+end 
+
 endmodule
